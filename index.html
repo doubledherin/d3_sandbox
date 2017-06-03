@@ -5,6 +5,19 @@
         <title>D3 Page Template</title>
         <script type="text/javascript" src="../d3/d3.min.js"></script>
         <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
+        <style type="text/css">
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: black;
+                shape-rendering: crispEdges;
+            }
+
+            .axis text {
+                font-family: sans-serif;
+                font-size: 11px;
+            }
+        </style>
     </head>
     <body>
         <script type="text/javascript">
@@ -24,7 +37,7 @@
                   [650,    421]
               ]
             const w = 900
-            const h = 100
+            const h = 300
             const barPadding = 1
             console.log("dataset", dataset)
 
@@ -133,6 +146,17 @@
                                 "font-size": "11px",
                                 fill: "red"
                             })
+
+            const xAxis = d3.axisBottom()
+                            .scale(xScale)
+
+            svg.append("g")
+                .attrs({
+                    class: "axis",
+                    transform: `translate(0, ${h - padding})`
+                })
+                .call(xAxis)
+
 
 
         </script>
