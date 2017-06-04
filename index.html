@@ -106,7 +106,7 @@
             //                     .attr("text-anchor", "middle")
 
             // Scatterplot made with svg
-            const padding = 20
+            const padding = 30
             const maxX = d3.max(dataset, d => d[0])
             const xScale = d3.scaleLinear()
                             .domain([0, maxX])
@@ -149,6 +149,7 @@
 
             const xAxis = d3.axisBottom()
                             .scale(xScale)
+                            .ticks(5)
 
             svg.append("g")
                 .attrs({
@@ -156,6 +157,17 @@
                     transform: `translate(0, ${h - padding})`
                 })
                 .call(xAxis)
+
+            const yAxis = d3.axisLeft()
+                            .scale(yScale)
+                            .ticks(5)
+
+            svg.append("g")
+                .attrs({
+                    class: "axis",
+                    transform: `translate(${padding}, 0)`
+                })
+                .call(yAxis)
 
 
 
